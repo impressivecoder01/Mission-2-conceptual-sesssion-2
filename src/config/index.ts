@@ -1,7 +1,8 @@
 import dotenv from "dotenv"
 
-dotenv.config()
+dotenv.config({quiet:true})
 const config={
-    port: process.env.PORT
+    port: process.env.PORT as string,
+    database_url: process.env.DATABASE_URL as string
 }
 export default config
