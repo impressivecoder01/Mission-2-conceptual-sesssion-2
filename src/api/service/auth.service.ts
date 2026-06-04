@@ -5,10 +5,13 @@ import bcrypt from "bcryptjs";
 class AuthService{
     async createUser(user: RUser & {password: string}){
         const{name,email,age,role, password} = user;
+        // if(!password){
+        //     throw new Error("Password is required")
+        // }
         const hash = await bcrypt.hash(password,20)
         const res = await sql`
-            INSERT INTO users(name, email, passwordHash, age, role)
-            VALUES (${name}, ${email}, ${hash} ${age}, COALESCE(${role}, 'user'))
+            INSERT INTO users(name, email, password_hash, age, role)
+            VALUES (${name}, ${email}, ${hash}, ${age}, COALESCE(${role}, 'user'))
             RETURNING id , name, age, role
         `
         return res[0]

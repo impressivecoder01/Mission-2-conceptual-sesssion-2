@@ -4,6 +4,7 @@ import { sendResponse } from "../../utilis/sendResponse";
 
 export const signup = async (req: Request, res: Response)=> {
     const user = await authService.createUser(req.body)
+    // console.log(req.body);
     if(!user){
         sendResponse(res, {message: "Failed to create user"}, 400)
         return
