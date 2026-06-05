@@ -4,7 +4,7 @@ export type User = {
     id: number,
     name: string,
     email: string,
-    passwordHash: string,
+    password_hash: string,
     age: number,
     role: Role,
     updated_at: Date,
