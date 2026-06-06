@@ -12,15 +12,15 @@ export const signup = async (req: Request, res: Response)=> {
     sendResponse(res, {message: "User created successfully", data : user} , 201)
 }
 export const login = async (req: Request, res: Response)=> {
-    const user = await authService.createUser(req.body)
     // console.log(req.body);
     // 
     //user er email password check 
     //user validate , signtoken
     const {email,password} = req.body
+    // const user = await authService.createUser(req.body)
     const user = await authService.validateUser(email,password)
     if(!user){
-        sendResponse(res, {message: "Failed to create user"}, 400)
+        sendResponse(res, {message: "Invalid email or password"}, 401)
         return
     }
 }
