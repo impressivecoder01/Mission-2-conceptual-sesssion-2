@@ -23,4 +23,6 @@ export const login = async (req: Request, res: Response)=> {
         sendResponse(res, {message: "Invalid email or password"}, 401)
         return
     }
+    //if this is true user is in our database
+    
 }
