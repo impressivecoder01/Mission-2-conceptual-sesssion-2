@@ -4,7 +4,7 @@ import config from "../config";
 import type { RUser } from "../types";
 import jwt from "jsonwebtoken"
 
-export const signToken = (payload: RUser) =>  {
+export const signToken = (payload: RUser & {id: number}) =>  {
     //access token=> data access
     // refresh token=> access token abr generate korbe
     const accessToken = jwt.sign(payload, config.jwt_secret,{

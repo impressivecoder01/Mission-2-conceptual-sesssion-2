@@ -1,6 +1,8 @@
 import type { Request, Response } from "express";
 import authService from "../service/auth.service";
 import { sendResponse } from "../../utilis/sendResponse";
+import { signToken } from "../../utilis/jwt";
+import { send } from "node:process";
 
 export const signup = async (req: Request, res: Response)=> {
     const user = await authService.createUser(req.body)
@@ -24,5 +26,10 @@ export const login = async (req: Request, res: Response)=> {
         return
     }
     //if this is true user is in our database
-    
+    const {accessToken, refreshToken} = signToken(user)
+    const result = {
+        user: user,
+        accessToken, refreshToken
+    }
+    return sendResponse(res, {message: "User login successful", data: result})
 }
