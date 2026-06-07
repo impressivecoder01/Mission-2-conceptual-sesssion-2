@@ -21,7 +21,7 @@ class AuthService{
         const res =await sql`
         SELECT * FROM users WHERE email = ${email}
         `
-        if(res.length){
+        if(!res.length){
             return null;
         }
         const {password_hash, ...user} = res[0] as User
