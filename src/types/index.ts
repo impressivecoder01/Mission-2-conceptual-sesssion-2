@@ -11,7 +11,7 @@ export type User = {
     created_at: Date
 }
 
-export type RUser = Omit<User,"id"| "updated_at"| "created_at"| "passwordHash">
+export type RUser = Omit<User,"id"| "updated_at"| "created_at"| "password_hash">
 
 export type Order = {
     id: number,
